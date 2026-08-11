@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Shayma Narejo, Software Engineering graduate and AI & Automation Intern building practical mobile products with Flutter, Dart, AI integration, automation, research, and documentation." />
+  <title>Shayma Narejo | AI, Automation & Flutter Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f7f4ef;
+      --surface:#ffffff;
+      --ink:#1d2430;
+      --muted:#667085;
+      --line:#e4ddd3;
+      --accent:#6f4d8a;
+      --accent-dark:#523767;
+      --soft:#eee7f3;
+      --shadow:0 14px 40px rgba(29,36,48,.08);
+      --radius:22px;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav-wrap{position:sticky;top:0;z-index:100;background:rgba(247,244,239,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(228,221,211,.8)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:"Playfair Display",serif;font-size:1.35rem;font-weight:700;letter-spacing:.01em}
+    .nav-links{display:flex;gap:26px;align-items:center;font-size:.95rem;font-weight:600;color:#49505c}
+    .nav-links a:hover{color:var(--accent)}
+    .nav-cta{padding:11px 18px;background:var(--ink);color:#fff;border-radius:999px}
+    .menu-btn{display:none;background:none;border:none;font-size:1.55rem}
+
+    .hero{padding:88px 0 76px}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:54px;align-items:center}
+    .eyebrow{display:inline-flex;padding:8px 12px;border-radius:999px;background:var(--soft);color:var(--accent-dark);font-weight:700;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+    h1{font-family:"Playfair Display",serif;font-size:clamp(3rem,7vw,5.8rem);line-height:.98;margin:22px 0 24px;letter-spacing:-.04em}
+    .hero p{font-size:1.16rem;max-width:760px;color:#4c5562;margin:0 0 28px}
+    .proof{font-weight:700;color:var(--ink)}
+    .actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:999px;font-weight:700;border:1px solid var(--ink);transition:.2s ease}
+    .btn.primary{background:var(--ink);color:#fff}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent}
+    .btn.secondary:hover{background:#fff}
+    .hero-card{background:var(--surface);padding:28px;border-radius:30px;box-shadow:var(--shadow);border:1px solid var(--line)}
+    .hero-card .stat{padding:18px 0;border-bottom:1px solid var(--line)}
+    .hero-card .stat:last-child{border-bottom:none}
+    .stat strong{display:block;font-size:1.6rem;margin-bottom:4px}
+    .stat span{color:var(--muted);font-size:.95rem}
+
+    section{padding:84px 0}
+    .section-kicker{color:var(--accent);font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+    .section-title{font-family:"Playfair Display",serif;font-size:clamp(2.1rem,4vw,3.6rem);line-height:1.08;margin:0 0 16px}
+    .section-lead{max-width:760px;color:var(--muted);font-size:1.05rem;margin-bottom:38px}
+
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .project{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 30px rgba(29,36,48,.05);display:flex;flex-direction:column}
+    .project-top{min-height:180px;padding:24px;background:linear-gradient(135deg,#efe8f5,#f7efe8);display:flex;align-items:flex-end}
+    .project-top span{display:inline-flex;padding:7px 10px;background:rgba(255,255,255,.8);border-radius:999px;font-size:.78rem;font-weight:700}
+    .project-body{padding:24px;display:flex;flex-direction:column;gap:14px;flex:1}
+    .project h3{font-size:1.25rem;margin:0;line-height:1.3}
+    .project p{margin:0;color:var(--muted);font-size:.95rem}
+    .meta{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{font-size:.76rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px;color:#555e6a;background:#faf9f7}
+    .project-link{font-weight:700;color:var(--accent-dark);margin-top:auto}
+
+    .case-study{margin-top:56px;background:var(--ink);color:#fff;border-radius:30px;padding:42px}
+    .case-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px}
+    .case-study p{color:#d5d9df}
+    .case-items{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .case-item{padding:18px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.04)}
+    .case-item strong{display:block;margin-bottom:6px}
+
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:start}
+    .about-card{background:var(--surface);border-radius:28px;border:1px solid var(--line);padding:30px;box-shadow:var(--shadow)}
+    .about-list{display:grid;gap:14px;margin-top:18px}
+    .about-item{padding:14px 0;border-bottom:1px solid var(--line)}
+    .about-item:last-child{border-bottom:none}
+    .about-item strong{display:block}
+    .about-copy p{color:var(--muted);font-size:1.04rem}
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .skill{padding:9px 12px;background:var(--soft);border-radius:999px;font-size:.84rem;font-weight:700;color:var(--accent-dark)}
+
+    .cta{background:linear-gradient(135deg,#62457b,#2d3142);color:#fff;border-radius:32px;padding:52px;margin-bottom:82px}
+    .cta-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .cta h2{font-family:"Playfair Display",serif;font-size:clamp(2.2rem,4vw,3.8rem);line-height:1.05;margin:0 0 14px}
+    .cta p{color:#e8e5ed;margin:0;max-width:650px}
+    .cta .actions{justify-content:flex-end}
+    .cta .btn.primary{background:#fff;color:var(--ink);border-color:#fff}
+    .cta .btn.secondary{border-color:rgba(255,255,255,.7);color:#fff}
+
+    footer{padding:26px 0 40px;color:var(--muted);font-size:.9rem}
+    .footer-flex{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+
+    @media (max-width:900px){
+      .hero-grid,.about-grid,.case-grid,.cta-grid{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr 1fr}
+      .hero{padding-top:60px}
+      .cta .actions{justify-content:flex-start}
+    }
+    @media (max-width:680px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      nav{height:68px}
+      .menu-btn{display:block}
+      .nav-links{display:none;position:absolute;left:14px;right:14px;top:72px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}
+      .nav-links.open{display:flex}
+      .nav-cta{text-align:center}
+      h1{font-size:3.2rem}
+      .hero{padding:48px 0 54px}
+      section{padding:62px 0}
+      .projects{grid-template-columns:1fr}
+      .case-study{padding:26px}
+      .case-items{grid-template-columns:1fr}
+      .cta{padding:32px 24px;margin-bottom:56px}
+      .actions .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="#home">Shayma Narejo</a>
+        <button class="menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#work">Work / Case Studies</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI Integration • Automation • Flutter / Dart • Mobile Products</div><p style="margin:16px 0 0;color:var(--accent-dark);font-weight:700;font-size:.92rem">Software Engineering Graduate · AI & Automation Intern at Humaitec</p>
+          <h1>I turn AI and automation into real, working mobile products.</h1>
+          <p class="proof">My portfolio proves that I can take AI and automation and turn them into real, working mobile products—combining instructional design, research, AI-assisted workflows, documentation, Flutter/Dart development, and practical AI integration to solve actual problems, not just experiment with AI in theory.</p>
+          <p>I am a Software Engineering graduate and AI & Automation Intern at Humaitec. I am developing my AI-integration skills while working on AI lead integration and mobile app development, with a focus on solutions that can be tested, used, and improved in the real world. My portfolio now includes visual evidence from my Home Interior Decor mobile app.</p>
+          <div class="actions">
+            <a class="btn primary" href="#contact">Work With Me</a>
+            <a class="btn secondary" href="#work">View My Work</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Professional focus">
+          <div class="stat"><strong>Mobile Product Development</strong><span>Flutter and Dart development focused on usable, responsive mobile experiences.</span></div>
+          <div class="stat"><strong>AI Integration & Automation</strong><span>Applying AI to real workflows, including lead integration, automation, and product functionality.</span></div>
+          <div class="stat"><strong>Research & Documentation</strong><span>Turning technical ideas and complex information into clear requirements, workflows, documentation, and learning resources.</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-kicker">Selected Work</div>
+        <h2 class="section-title">Work that shows how I move from problem to working solution.</h2>
+        <p class="section-lead">The portfolio is deliberately focused on evidence: practical AI integration, automation, mobile development, and the research and documentation needed to make technical work usable. Where a project is still developing, I describe it as work in progress rather than overstating the result.</p>
+
+        <div class="projects">
+          <article class="project">
+            <div class="project-top"><span>AI + Mobile Development</span></div>
+            <div class="project-body">
+              <h3>Home Interior Decor Mobile App</h3>
+              <p>A mobile UI project for browsing home-interior inspiration, categories, kitchen collections, and furniture products through a polished, responsive interface.</p>
+              <div class="meta"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">AI Integration</span></div>
+              <a href="#case-mobile" class="project-link">View case study →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top"><span>AI & Automation</span></div>
+            <div class="project-body">
+              <h3>AI Lead Integration Workflow</h3>
+              <p>Internship work centered on connecting AI and automation to lead-related workflows, with attention to practical integration rather than isolated prompting.</p>
+              <div class="meta"><span class="tag">AI Integration</span><span class="tag">Automation</span><span class="tag">Humaitec Internship</span></div>
+              <a href="#case-leads" class="project-link">View case study →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top"><span>Research + Instructional Systems</span></div>
+            <div class="project-body">
+              <h3>Research, Documentation & AI-Assisted Workflows</h3>
+              <p>Using research, structured documentation, and instructional thinking to make technical workflows clearer, repeatable, and easier to learn or maintain.</p>
+              <div class="meta"><span class="tag">Research</span><span class="tag">Documentation</span><span class="tag">Instructional Design</span></div>
+              <a href="#case-docs" class="project-link">View case study →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="case-study" id="case-mobile">
+          <div class="case-grid">
+            <div>
+              <div class="section-kicker" style="color:#d7c2e7">Mobile App Case Study</div>
+              <h2 class="section-title" style="color:#fff">Home Interior Decor App</h2>
+              <p>A real mobile-product UI project designed around home-interior discovery. The interface includes launch/authentication screens and a content-rich home experience for browsing categories, room inspiration, and furniture collections.</p>
+            </div>
+            <div class="case-items">
+              <div class="case-item"><strong>Problem</strong><span>Create a visually coherent mobile experience that helps users discover interior inspiration and browse home-decor products without overwhelming the screen.</span></div>
+              <div class="case-item"><strong>Solution</strong><span>A dark, warm-toned interface with focused navigation, visual category controls, room imagery, product cards, search access, and clear login/sign-up entry points.</span></div>
+              <div class="case-item"><strong>What I Designed</strong><span>Launch screens, authentication entry, home screen hierarchy, category navigation, image-led room sections, product collection cards, and bottom navigation.</span></div>
+              <div class="case-item"><strong>Product Evidence</strong><span>The screenshots below show the actual app UI rather than a conceptual mock description. Development and integration details should be added only as they are implemented and tested.</span></div>
+            </div>
+          </div>
+
+          <div class="project-evidence">
+            <figure class="evidence-card">
+              <img src="home-interior-app-ui.png" alt="Home Interior Decor mobile app home screen UI">
+              <small><strong>Home experience:</strong> category browsing, kitchen inspiration, new collection cards, search, and bottom navigation.</small>
+            </figure>
+            <figure class="evidence-card">
+              <img src="home-interior-app-launch.png" alt="Home Interior Decor mobile app launch and login screens">
+              <small><strong>Launch experience:</strong> branded splash screen plus login and sign-up entry screen.</small>
+            </figure>
+          </div>
+        </div>
+
+        <div class="case-study" id="case-leads" style="margin-top:24px;background:#303646">
+          <div class="case-grid">
+            <div>
+              <div class="section-kicker" style="color:#d7c2e7">Internship Case Study</div>
+              <h2 class="section-title" style="color:#fff">AI Lead Integration at Humaitec</h2>
+              <p>My internship work gives me direct exposure to applying AI and automation inside an operational workflow instead of treating AI as a standalone experiment.</p>
+            </div>
+            <div class="case-items">
+              <div class="case-item"><strong>Context</strong><span>AI & Automation Internship at Humaitec, including work related to AI lead integration and mobile app development.</span></div>
+              <div class="case-item"><strong>Focus</strong><span>Understand where AI can fit into lead workflows and how integrations can reduce repetitive work or improve the flow of information.</span></div>
+              <div class="case-item"><strong>Learning</strong><span>Developing practical AI-integration skills while using Claude AI as one learning and problem-solving resource.</span></div>
+              <div class="case-item"><strong>Evidence Standard</strong><span>I only present implementation details and results that I can demonstrate; confidential or unverified internship claims are not included.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study" id="case-docs" style="margin-top:24px;background:#473b4d">
+          <div class="case-grid">
+            <div>
+              <div class="section-kicker" style="color:#e0cdeb">Supporting Capability</div>
+              <h2 class="section-title" style="color:#fff">Research, Documentation & AI-Assisted Workflows</h2>
+              <p>Building useful technology also requires clear thinking around the problem, requirements, workflow, and handoff. I use research and documentation to support that process.</p>
+            </div>
+            <div class="case-items">
+              <div class="case-item"><strong>Research</strong><span>Investigate tools, requirements, technical options, and user needs before choosing an implementation direction.</span></div>
+              <div class="case-item"><strong>Documentation</strong><span>Translate processes and technical work into clearer steps, decisions, notes, and reusable references.</span></div>
+              <div class="case-item"><strong>Instructional Design</strong><span>Apply structured explanation and learning principles when a technical workflow needs to be understood by another person.</span></div>
+              <div class="case-item"><strong>AI-Assisted Workflow</strong><span>Use AI to accelerate research, reasoning, debugging, and drafting while retaining human review and responsibility for the final output.</span></div>
+            </div>
+          </div>
+        </div>      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-card">
+          <div class="section-kicker">Professional Focus</div>
+          <div class="about-list">
+            <div class="about-item"><strong>Software Engineering</strong><span>Bachelor's graduate building practical technical and product-development skills.</span></div>
+            <div class="about-item"><strong>Flutter / Dart</strong><span>Mobile app development with a focus on turning requirements into usable product experiences.</span></div>
+            <div class="about-item"><strong>AI & Automation</strong><span>AI integration, workflow automation, lead integration, and practical problem-solving.</span></div>
+            <div class="about-item"><strong>Research & Documentation</strong><span>Structured research, instructional thinking, AI-assisted workflows, and clear technical documentation.</span></div>
+          </div>
+        </div>
+        <div class="about-copy">
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">I am building at the intersection of software engineering, mobile development, AI, and automation.</h2>
+          <p>I'm Shayma Narejo, a Bachelor's graduate in Software Engineering. I am currently interning at Humaitec as an AI and Automation Intern, where my work includes AI lead integration and mobile app development.</p>
+          <p>My goal is to become strong at practical AI integration: understanding how AI can be connected to a product or workflow so that it solves a concrete problem. I am developing this capability alongside Flutter/Dart development, research, documentation, and instructional design.</p>
+          <p>I am currently using Claude AI as part of my learning process for AI integration. I use AI as a development and reasoning aid, but the standard for this portfolio is working output: what was built, how it works, what problem it addresses, and what I learned from implementing it.</p><p>I am open to freelance and collaboration opportunities where I can contribute to AI-enabled mobile products, automation, integrations, research, or technical documentation.</p>
+          <div class="skills">
+            <span class="skill">Flutter</span><span class="skill">Dart</span><span class="skill">Mobile App Development</span><span class="skill">AI Integration</span><span class="skill">Automation</span><span class="skill">AI Lead Integration</span><span class="skill">Research</span><span class="skill">Documentation</span><span class="skill">Instructional Design</span><span class="skill">Claude AI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding-bottom:0">
+      <div class="container">
+        <div class="cta">
+          <div class="cta-grid">
+            <div>
+              <div class="section-kicker" style="color:#e0cdeb">Contact</div>
+              <h2>Have a problem that could become a practical AI-enabled product?</h2>
+              <p>I am open to freelance and collaboration work involving Flutter/Dart mobile development, AI integration, automation, lead workflows, research, and technical documentation. If the problem is real and the goal is to build something useful, I want to hear about it.</p>
+            </div>
+            <div class="actions">
+              <a class="btn primary" href="mailto:narejo.shayma@gmail.com">Contact Me</a>
+              <a class="btn secondary" href="#work">View My Work</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-flex">
+      <span>© 2026 Shayma Narejo Portfolio.</span>
+      <span>Software Engineering • Flutter / Dart • AI Integration • Automation</span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
